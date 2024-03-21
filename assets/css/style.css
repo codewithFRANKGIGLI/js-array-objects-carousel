@@ -3,3 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.debug .container {
+    max-width: 1180px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+.row {
+    height: 400px;
+}
+
+.col-3 img {
+    height: calc(100% / 5);
+}
