@@ -54,6 +54,7 @@ const allImages = document.querySelectorAll('#imagesContainer img');
 allImages[index].classList.remove('d-none');
 const allThumbnails = document.querySelectorAll('#thumbnailsContainer img');
 allThumbnails[index].classList.add('border', 'border-white');
+allThumbnails[index].classList.remove('opacity-50');
 
 const nextButton = document.querySelector('#nextButton');
 nextButton.addEventListener('click', function() {
@@ -65,6 +66,7 @@ nextButton.addEventListener('click', function() {
     allImages[index].classList.add('d-none');
     allThumbnails[index].classList.remove('border', 'border-white');
     allThumbnails[index].classList.add('opacity-50');
+    
     if(index < allImages.length -1) {
         index++;
     } else {
@@ -83,7 +85,6 @@ prevButton.addEventListener('click', function(){
     allImages[index].classList.add('d-none')
     allThumbnails[index].classList.remove('border', 'border-white');
     allThumbnails[index].classList.add('opacity-50');
-
     
     if(index > 0 ) {
         index--;
