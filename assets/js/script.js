@@ -34,12 +34,21 @@ const thumbnailsContainer = document.querySelector('#thumbnailsContainer');
 for(let key in images) {
     // console.log(images[key]);
     const thisPath = images[key].image;
+    const thisTitle = images[key].title;
+    const thisText = images[key].text;
     // console.log(thisPath);
     const newImage = `
-    <img class="object-fit-cover d-none" src="${thisPath}" id="mainImage">
+    <div id="" class="innerContainerImg d-none h-100 p-0 position-relative">
+        <img class="object-fit-cover" src="${thisPath}">
+        <div class="caption position-absolute bottom-0 end-0 text-white text-end m-3">
+            <h2 id="imageTitle">${thisTitle}</h2>
+            <p id="imageDescription">${thisText}</p>
+        </div>
+    </div>
     `;
-    // console.log(newImage);
+
     imagesContainer.innerHTML += newImage;
+    // console.log(newImage);
 
     const newThumbnail = `
     <img class="object-fit-cover opacity-50" src="${thisPath}" alt="thumbnail">
@@ -50,7 +59,8 @@ for(let key in images) {
 }
 
 // rimuoviamo la classe d-none alla prima immagine
-const allImages = document.querySelectorAll('#imagesContainer img');
+const allImages = document.querySelectorAll('.innerContainerImg');
+console.log(allImages);
 allImages[index].classList.remove('d-none');
 const allThumbnails = document.querySelectorAll('#thumbnailsContainer img');
 allThumbnails[index].classList.add('border', 'border-white');
@@ -66,7 +76,7 @@ nextButton.addEventListener('click', function() {
     allImages[index].classList.add('d-none');
     allThumbnails[index].classList.remove('border', 'border-white');
     allThumbnails[index].classList.add('opacity-50');
-    
+
     if(index < allImages.length -1) {
         index++;
     } else {
