@@ -42,7 +42,7 @@ for(let key in images) {
     imagesContainer.innerHTML += newImage;
 
     const newThumbnail = `
-    <img class="object-fit-cover" src="${thisPath}" alt="thumbnail">
+    <img class="object-fit-cover opacity-50" src="${thisPath}" alt="thumbnail">
     `;
     // console.log(newThumbnail);
 
@@ -50,12 +50,12 @@ for(let key in images) {
 }
 
 // rimuoviamo la classe d-none alla prima immagine
-const allImages = document.querySelectorAll("#imagesContainer img");
+const allImages = document.querySelectorAll('#imagesContainer img');
 allImages[index].classList.remove('d-none');
-const allThumbnails = document.querySelectorAll( "#thumbnailsContainer img" );
-allThumbnails[index].classList.add("border", "border-white");
+const allThumbnails = document.querySelectorAll('#thumbnailsContainer img');
+allThumbnails[index].classList.add('border', 'border-white');
 
-const nextButton = document.querySelector("#nextButton");
+const nextButton = document.querySelector('#nextButton');
 nextButton.addEventListener('click', function() {
     // Aggiungiamo d-none all'elemento corrente
     // incrementiamo activeItem di 1
@@ -63,8 +63,8 @@ nextButton.addEventListener('click', function() {
     // rimuoviamo border border-white alla thumbnail corrente
     // e lo aggiungiamo al successivo
     allImages[index].classList.add('d-none');
-    allThumbnails[index].classList.remove("border", "border-white");
-
+    allThumbnails[index].classList.remove('border', 'border-white');
+    allThumbnails[index].classList.add('opacity-50');
     if(index < allImages.length -1) {
         index++;
     } else {
@@ -72,14 +72,18 @@ nextButton.addEventListener('click', function() {
     }
 
     allImages[index].classList.remove('d-none');
-    allThumbnails[index].classList.add("border", "border-white");
+    allThumbnails[index].classList.add('border', 'border-white');
+    allThumbnails[index].classList.remove('opacity-50');
+
 });
 
-const prevButton = document.querySelector("#prevButton");
+const prevButton = document.querySelector('#prevButton');
 prevButton.addEventListener('click', function(){
     // Funzionamento simile a nextButton, ma con una decrementazione dell'indice
     allImages[index].classList.add('d-none')
-    allThumbnails[index].classList.remove("border", "border-white");
+    allThumbnails[index].classList.remove('border', 'border-white');
+    allThumbnails[index].classList.add('opacity-50');
+
     
     if(index > 0 ) {
         index--;
@@ -88,5 +92,7 @@ prevButton.addEventListener('click', function(){
     }
 
     allImages[index].classList.remove('d-none');
-    allThumbnails[index].classList.add("border", "border-white");
+    allThumbnails[index].classList.add('border', 'border-white');
+    allThumbnails[index].classList.remove('opacity-50');
+
 });
