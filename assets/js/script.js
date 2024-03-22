@@ -66,13 +66,17 @@ const allThumbnails = document.querySelectorAll('#thumbnailsContainer img');
 allThumbnails[index].classList.add('border', 'border-white');
 allThumbnails[index].classList.remove('opacity-50');
 
+setInterval(showNextImage, 3000)
+
 const nextButton = document.querySelector('#nextButton');
-nextButton.addEventListener('click', function() {
-    // Aggiungiamo d-none all'elemento corrente
-    // incrementiamo activeItem di 1
-    // rimuoviamo d-none al nuovo activeItem
-    // rimuoviamo border border-white alla thumbnail corrente
-    // e lo aggiungiamo al successivo
+nextButton.addEventListener('click', showNextImage);
+
+const prevButton = document.querySelector('#prevButton');
+prevButton.addEventListener('click', showPrevImage);
+
+
+// FUNCTIONS
+function showNextImage () {
     allImages[index].classList.add('d-none');
     allThumbnails[index].classList.remove('border', 'border-white');
     allThumbnails[index].classList.add('opacity-50');
@@ -86,12 +90,9 @@ nextButton.addEventListener('click', function() {
     allImages[index].classList.remove('d-none');
     allThumbnails[index].classList.add('border', 'border-white');
     allThumbnails[index].classList.remove('opacity-50');
+}
 
-});
-
-const prevButton = document.querySelector('#prevButton');
-prevButton.addEventListener('click', function(){
-    // Funzionamento simile a nextButton, ma con una decrementazione dell'indice
+function showPrevImage (){
     allImages[index].classList.add('d-none')
     allThumbnails[index].classList.remove('border', 'border-white');
     allThumbnails[index].classList.add('opacity-50');
@@ -105,5 +106,4 @@ prevButton.addEventListener('click', function(){
     allImages[index].classList.remove('d-none');
     allThumbnails[index].classList.add('border', 'border-white');
     allThumbnails[index].classList.remove('opacity-50');
-
-});
+}
